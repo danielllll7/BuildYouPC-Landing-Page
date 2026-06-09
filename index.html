@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Assembly Pro helps you build a custom PC for gaming, content creation, programming, and office workflows with expert recommendations and premium components." />
+  <meta name="keywords" content="custom PC builder, gaming PC, pre-built PC, workstation, Assembly Pro" />
+  <meta name="author" content="Assembly Pro" />
+  <meta property="og:title" content="Assembly Pro - Build Your Dream PC" />
+  <meta property="og:description" content="Customize your perfect PC based on your needs and budget." />
+  <meta property="og:type" content="website" />
+  <title>Assembly Pro | Build Your Dream PC</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            googleBlue:       "#1a73e8",
+            googleRed:        "#ea4335",
+            googleYellow:     "#fbbc05",
+            googleGreen:      "#34a853",
+            googleGrayBg:     "#f8f9fa",
+            googleBorder:     "#dadce0",
+            googleTextDark:   "#202124",
+            googleTextMedium: "#3c4043",
+            googleTextLight:  "#5f6368",
+          },
+          fontFamily: { sans: ["Google Sans", "sans-serif"] },
+        }
+      }
+    };
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mortezaom/google-sans-cdn@master/fonts.css" />
+
+  <style>
+    /* ── Reset & Base ─────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: "Google Sans", sans-serif;
+      font-weight: 400;
+      background: #ffffff;
+      color: #202124;
+      overflow-x: hidden;
+    }
+
+    /* ── Gradient A-Star Logo ─────────────────── */
+    .logo-star { display:flex; align-items:center; justify-content:center; width:36px; height:36px; flex-shrink:0; }
+    .logo-star svg { display:block; }
+
+    /* ── Gradient text ────────────────────────── */
+    .gradient-text {
+      background: linear-gradient(100deg, #1a73e8 0%, #ea4335 30%, #fbbc05 60%, #34a853 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ── Nav ──────────────────────────────────── */
+    .nav-pill {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid #dadce0;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* ── Hero ─────────────────────────────────── */
+    #home { background: linear-gradient(145deg,#eef3fb 0%,#f0fdf4 50%,#fef9ec 100%); }
+
+    /* ── Google-Store Carousel ────────────────── */
+    .store-carousel-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #e8eaed;
+    }
+    .store-slide { display:none; animation: fadeSlide .45s ease; }
+    .store-slide.active { display:grid; }
+    @keyframes fadeSlide {
+      from { opacity:0; transform:translateX(20px); }
+      to   { opacity:1; transform:translateX(0);    }
+    }
+    @media (max-width:640px) { .store-slide.active { grid-template-columns:1fr !important; } }
+
+    /* ── Product Cards ────────────────────────── */
+    .pc-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid #e8eaed;
+      overflow: hidden;
+      transition: box-shadow .25s ease, transform .25s ease;
+      cursor: pointer;
+    }
+    .pc-card:hover { box-shadow:0 8px 28px rgba(26,115,232,.14); transform:translateY(-4px); }
+    .pc-card-img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+    .pc-card-body { padding:20px 20px 24px; }
+    .pc-card-title {
+      font-size:1rem; font-weight:500; color:#202124;
+      display:flex; align-items:baseline; justify-content:space-between; gap:8px;
+    }
+    .pc-card-price { color:#202124; white-space:nowrap; }
+    .pc-card-spec { font-size:.8rem; color:#5f6368; margin-top:6px; line-height:1.5; }
+    .pc-card-btn {
+      display:block; width:100%; margin-top:18px;
+      background:#1a73e8; color:#fff;
+      border:none; border-radius:9999px; padding:10px 0;
+      font-size:.875rem; font-weight:500; font-family:"Google Sans",sans-serif;
+      cursor:pointer; transition:background .2s; text-align:center;
+    }
+    .pc-card-btn:hover { background:#1558b0; }
+
+    /* ── Category Cards ───────────────────────── */
+    .cat-card {
+      border-radius:20px; background:#fff;
+      border:1px solid #e8eaed; overflow:hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .cat-card:hover { box-shadow:0 8px 24px rgba(26,115,232,.12); transform:translateY(-5px); }
+
+    /* ── Step Cards ───────────────────────────── */
+    .step-card {
+      background:#fff; border:1px solid #e8eaed; border-radius:20px;
+      padding:28px 24px; position:relative; overflow:hidden;
+    }
+    .step-card::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; }
+    .step-card:nth-child(1)::before { background:#1a73e8; }
+    .step-card:nth-child(2)::before { background:#34a853; }
+    .step-card:nth-child(3)::before { background:#ea4335; }
+    .step-card:nth-child(4)::before { background:#fbbc05; }
+
+    /* ── Carousel Arrows ──────────────────────── */
+    .carousel-arrow {
+      width:40px; height:40px; border-radius:50%;
+      background:#fff; border:1px solid #dadce0;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:box-shadow .2s, background .2s;
+      color:#202124; flex-shrink:0;
+    }
+    .carousel-arrow:hover { background:#f8f9fa; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+
+    /* ── Dot Indicators ───────────────────────── */
+    .dot-ind {
+      width:8px; height:8px; border-radius:50%;
+      background:#dadce0; cursor:pointer;
+      transition:background .2s, transform .2s; border:none;
+    }
+    .dot-ind.active { background:#1a73e8; transform:scale(1.35); }
+
+    /* ── Color Swatches ───────────────────────── */
+    .cswatch {
+      width:22px; height:22px; border-radius:50%;
+      border:2px solid transparent; cursor:pointer;
+      transition:border-color .2s; outline:2px solid transparent; outline-offset:2px;
+    }
+    .cswatch.active { border-color:#fff; outline-color:#1a73e8; }
+
+    /* ── Ripple ───────────────────────────────── */
+    .ripple { position:relative; overflow:hidden; }
+    .ripple .rdot {
+      position:absolute; border-radius:9999px;
+      transform:scale(0); animation:rAnim .6s linear;
+      background:rgba(255,255,255,.28); pointer-events:none;
+    }
+    @keyframes rAnim { to { transform:scale(4); opacity:0; } }
+
+    /* ── Liquid shine ─────────────────────────── */
+    .lpill { position:relative; overflow:hidden; }
+    .lpill::before {
+      content:""; position:absolute; inset:-80% -20%;
+      background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.2),transparent 70%);
+      transform:translateX(-120%) rotate(12deg); transition:transform .7s ease;
+    }
+    .lpill:hover::before { transform:translateX(120%) rotate(12deg); }
+
+    /* ── Reveal animation ─────────────────────── */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
+    .reveal.show { opacity:1; transform:translateY(0); }
+
+    /* ── Float animations ─────────────────────── */
+    .float-slow    { animation:floatY 7s ease-in-out infinite; }
+    .float-delayed { animation:floatY 6.5s ease-in-out 1.2s infinite; }
+    @keyframes floatY { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+    .spin-slow { animation:spinRing 20s linear infinite; }
+    @keyframes spinRing { to{transform:rotate(360deg);} }
+
+    /* ── Marquee ──────────────────────────────── */
+    .brand-marquee { animation:marquee 30s linear infinite; }
+    @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+    /* ── Social hover brand colors ────────────── */
+    .soc-ig:hover { background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)!important; color:#fff!important; border-color:transparent!important; }
+    .soc-x:hover  { background:#000!important; color:#fff!important; border-color:transparent!important; }
+    .soc-yt:hover { background:#ff0000!important; color:#fff!important; border-color:transparent!important; }
+    .soc-li:hover { background:#0077b5!important; color:#fff!important; border-color:transparent!important; }
+    .soc-fb:hover { background:#1877f2!important; color:#fff!important; border-color:transparent!important; }
+    .soc-tt:hover { background:#010101!important; color:#fff!important; border-color:transparent!important; }
+
+    /* ── FAQ ──────────────────────────────────── */
+    details summary::-webkit-details-marker { display:none; }
+
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-googleTextDark focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+
+<!-- ════════════════════════════════════════
+     HEADER
+════════════════════════════════════════ -->
+<header class="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6">
+  <div class="mx-auto max-w-7xl">
+
+    <!-- top bar -->
+    <div class="mb-2 hidden items-center justify-center gap-2 text-xs text-googleTextLight sm:flex">
+      <svg class="h-3.5 w-3.5 text-googleGreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      Free expert review on every custom PC configuration
+    </div>
+
+    <nav class="nav-pill flex items-center justify-between rounded-full px-4 py-2 shadow-sm" aria-label="Primary navigation">
+
+      <!-- ── LOGO: 4-point gradient star + "A" + wordmark ── -->
+      <a href="#home" class="flex items-center gap-2.5 rounded-full px-1 py-1 focus:outline-none focus:ring-2 focus:ring-googleBlue">
+        <div class="logo-star">
+          <svg viewBox="0 0 40 40" width="36" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="sg1" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#1a73e8"/>
+                <stop offset="30%"  stop-color="#ea4335"/>
+                <stop offset="65%"  stop-color="#fbbc05"/>
+                <stop offset="100%" stop-color="#34a853"/>
+              </linearGradient>
+              <linearGradient id="ag1" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#1a73e8"/>
+                <stop offset="50%"  stop-color="#ea4335"/>
+                <stop offset="100%" stop-color="#34a853"/>
+              </linearGradient>
+            </defs>
+            <!-- 4-point star -->
+            <path d="M20 2C20 2 22 14 20 20C18 14 20 2 20 2Z
+                     M38 20C38 20 26 22 20 20C26 18 38 20 38 20Z
+                     M20 38C20 38 18 26 20 20C22 26 20 38 20 38Z
+                     M2 20C2 20 14 18 20 20C14 22 2 20 2 20Z"
+                  fill="url(#sg1)"/>
+            <!-- Letter A -->
+            <text x="20" y="25.5" text-anchor="middle" font-family="Google Sans,sans-serif" font-weight="700" font-size="14" fill="url(#ag1)">A</text>
+          </svg>
+        </div>
+        <span class="text-sm font-medium tracking-tight text-googleTextDark sm:text-base">Assembly<span class="text-googleBlue">Pro</span></span>
+      </a>
+
+      <!-- desktop links -->
+      <div class="hidden items-center gap-0.5 lg:flex">
+        <a class="rounded-full px-4 py-2 text-sm text-googleTextMedium transition hover:bg-googleGrayBg hover:text-googleBlue" href="#home">Home</a>
+        <a class="rounded-full px-4 py-2 text-sm text-googleTextMedium transition hover:bg-googleGrayBg hover:text-googleBlue" href="#build">Build PC</a>
+        <a class="rounded-full px-4 py-2 text-sm text-googleTextMedium transition hover:bg-googleGrayBg hover:text-googleBlue" href="#prebuilds">Pre-Builds</a>
+        <a class="rounded-full px-4 py-2 text-sm text-googleTextMedium transition hover:bg-googleGrayBg hover:text-googleBlue" href="#accessories">Accessories</a>
+        <a class="rounded-full px-4 py-2 text-sm text-googleTextMedium transition hover:bg-googleGrayBg hover:text-googleBlue" href="#about">About</a>
+        <a class="rounded-full px-4 py-2 text-sm text-googleTextMedium transition hover:bg-googleGrayBg hover:text-googleBlue" href="#faq">FAQ</a>
+        <a class="rounded-full px-4 py-2 text-sm text-googleTextMedium transition hover:bg-googleGrayBg hover:text-googleBlue" href="#contact">Contact</a>
+      </div>
+
+      <!-- actions -->
+      <div class="hidden items-center gap-2 sm:flex">
+        <button class="rounded-full px-4 py-2 text-sm font-medium text-googleTextMedium transition hover:bg-googleGrayBg" type="button" data-login-open>Login</button>
+        <a class="lpill ripple rounded-full bg-googleBlue px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700" href="#build">Get Started</a>
+      </div>
+
+      <!-- hamburger -->
+      <button id="menuButton" class="grid h-10 w-10 place-items-center rounded-full border border-googleBorder bg-white text-googleTextDark shadow-sm lg:hidden" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </nav>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="mt-2 hidden rounded-3xl border border-googleBorder bg-white/95 p-3 shadow-lg backdrop-blur-md lg:hidden">
+      <div class="grid gap-1 text-sm font-medium text-googleTextMedium">
+        <a class="rounded-2xl px-4 py-3 transition hover:bg-googleGrayBg hover:text-googleBlue" href="#home">Home</a>
+        <a class="rounded-2xl px-4 py-3 transition hover:bg-googleGrayBg hover:text-googleBlue" href="#build">Build PC</a>
+        <a class="rounded-2xl px-4 py-3 transition hover:bg-googleGrayBg hover:text-googleBlue" href="#prebuilds">Pre-Builds</a>
+        <a class="rounded-2xl px-4 py-3 transition hover:bg-googleGrayBg hover:text-googleBlue" href="#accessories">Accessories</a>
+        <a class="rounded-2xl px-4 py-3 transition hover:bg-googleGrayBg hover:text-googleBlue" href="#about">About</a>
+        <a class="rounded-2xl px-4 py-3 transition hover:bg-googleGrayBg hover:text-googleBlue" href="#faq">FAQ</a>
+        <a class="rounded-2xl px-4 py-3 transition hover:bg-googleGrayBg hover:text-googleBlue" href="#contact">Contact</a>
+        <button class="rounded-2xl px-4 py-3 text-left transition hover:bg-googleGrayBg hover:text-googleBlue" type="button" data-login-open>Login</button>
+        <a class="ripple block rounded-2xl bg-googleBlue px-4 py-3 text-center font-medium text-white shadow-sm hover:bg-blue-700" href="#build">Get Started</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section id="home" class="relative overflow-hidden px-4 pb-16 pt-36 sm:px-6 lg:pt-44">
+    <div class="pointer-events-none absolute -top-24 left-1/4 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl"></div>
+    <div class="pointer-events-none absolute right-10 top-40 hidden h-64 w-64 rounded-full bg-green-300/15 blur-3xl md:block"></div>
+    <div class="pointer-events-none absolute bottom-10 left-8 hidden h-48 w-48 rounded-full bg-yellow-200/15 blur-3xl lg:block"></div>
+
+    <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
+      <!-- left -->
+      <div class="relative z-10 text-center lg:text-left">
+        <div class="reveal mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-googleBorder bg-white/80 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-googleTextLight shadow-sm backdrop-blur lg:mx-0">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <defs><linearGradient id="hs" x1="0" y1="0" x2="16" y2="16" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1a73e8"/><stop offset="50%" stop-color="#ea4335"/><stop offset="100%" stop-color="#34a853"/></linearGradient></defs>
+            <path d="M8 1C8 1 9 7 8 8C7 7 8 1 8 1ZM15 8C15 8 9 9 8 8C9 7 15 8 15 8ZM8 15C8 15 7 9 8 8C9 9 8 15 8 15ZM1 8C1 8 7 7 8 8C7 9 1 8 1 8Z" fill="url(#hs)"/>
+          </svg>
+          Precision PCs for every workflow
+        </div>
+
+        <h1 class="reveal mx-auto max-w-3xl text-5xl font-medium leading-[1.07] tracking-tight text-googleTextDark sm:text-6xl md:text-7xl lg:mx-0 lg:text-[5rem]">
+          Build your <span class="gradient-text">dream PC</span>,<br>your way.
+        </h1>
+
+        <p class="reveal mx-auto mt-6 max-w-lg text-base leading-7 text-googleTextMedium sm:text-lg lg:mx-0">
+          Customize your perfect PC based on your needs and budget. Expert-assembled, stress-tested, shipped to your door.
+        </p>
+
+        <div class="reveal mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
+          <a href="#build" class="lpill ripple inline-flex w-full items-center justify-center gap-2 rounded-full bg-googleBlue px-7 py-3.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 hover:-translate-y-0.5 sm:w-auto">
+            Start Building
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#prebuilds" class="ripple inline-flex w-full items-center justify-center gap-2 rounded-full border border-googleBorder bg-white px-7 py-3.5 text-sm font-medium text-googleTextDark shadow-sm transition hover:bg-googleGrayBg hover:-translate-y-0.5 sm:w-auto">
+            Explore Pre-Builds
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </a>
+        </div>
+
+        <div class="reveal mt-10 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
+          <span class="flex items-center gap-1.5 text-sm text-googleTextLight">
+            <svg class="h-4 w-4 text-googleGreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+            48-hour assembly
+          </span>
+          <span class="flex items-center gap-1.5 text-sm text-googleTextLight">
+            <svg class="h-4 w-4 text-googleBlue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Stress-tested
+          </span>
+          <span class="flex items-center gap-1.5 text-sm text-googleTextLight">
+            <svg class="h-4 w-4 text-googleRed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Expert-curated
+          </span>
+        </div>
+      </div>
+
+      <!-- right floating PC -->
+      <div class="reveal relative mx-auto w-full max-w-[30rem]">
+        <div class="relative aspect-square">
+          <div class="absolute inset-6 rounded-full bg-gradient-to-br from-blue-200/40 via-green-100/30 to-yellow-100/20 blur-2xl"></div>
+          <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=85"
+               alt="Premium gaming PC" class="absolute inset-[10%] h-[80%] w-[80%] rounded-3xl object-cover"
+               style="filter:drop-shadow(0 24px 48px rgba(0,0,0,.18))"/>
+          <div class="spin-slow absolute inset-0 rounded-full border border-dashed border-googleBorder/50"></div>
+          <div class="float-slow absolute -left-4 top-16 flex items-center gap-2 rounded-2xl border border-googleBorder bg-white px-4 py-2 text-sm font-medium shadow-md">
+            <svg class="h-5 w-5 text-googleGreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            RTX Ready
+          </div>
+          <div class="float-delayed absolute -right-4 bottom-20 flex items-center gap-2 rounded-2xl border border-googleBorder bg-white px-4 py-2 text-sm font-medium shadow-md">
+            <svg class="h-5 w-5 text-googleBlue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+            Cool &amp; Quiet
+          </div>
+          <div class="float-slow absolute bottom-6 left-14 rounded-full bg-googleRed px-4 py-1.5 text-xs font-medium text-white shadow">48h Assembly</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       BUILD CATEGORIES
+  ════════════════════════════════════════ -->
+  <section id="build" class="px-4 py-20 sm:px-6" style="background:#f8faff">
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+        <div>
+          <p class="mb-2 text-sm font-medium uppercase tracking-widest text-googleGreen">Build Categories</p>
+          <h2 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.01em">
+            Choose the machine that<br>matches your ambition.
+          </h2>
+        </div>
+        <p class="max-w-sm text-sm leading-6 text-googleTextLight">Assembly Pro tunes every part list for performance, thermals, noise, and your budget.</p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="cat-card reveal">
+          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=700&q=80" alt="Gaming PC" class="h-44 w-full object-cover"/>
+          <div class="p-5">
+            <div class="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#e8f0fd">
+              <svg class="h-5 w-5 text-googleBlue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M8 12h.01M12 12h.01M18 10h.01M16 12h.01"/></svg>
+            </div>
+            <h3 class="text-base font-medium text-googleTextDark">Gaming PC</h3>
+            <p class="mt-1.5 text-sm leading-6 text-googleTextLight">High-refresh builds for esports, AAA, streaming, and GPU upgrades.</p>
+          </div>
+        </article>
+        <article class="cat-card reveal">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=80" alt="Content Creation" class="h-44 w-full object-cover"/>
+          <div class="p-5">
+            <div class="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#fce8e6">
+              <svg class="h-5 w-5 text-googleRed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="2.18"/><path d="m10 15 5-3-5-3z"/></svg>
+            </div>
+            <h3 class="text-base font-medium text-googleTextDark">Content Creation</h3>
+            <p class="mt-1.5 text-sm leading-6 text-googleTextLight">Balanced CPU, GPU, RAM for editing, rendering, and design.</p>
+          </div>
+        </article>
+        <article class="cat-card reveal">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=700&q=80" alt="Programming" class="h-44 w-full object-cover"/>
+          <div class="p-5">
+            <div class="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#fef5e0">
+              <svg class="h-5 w-5 text-googleYellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3 class="text-base font-medium text-googleTextDark">Programming</h3>
+            <p class="mt-1.5 text-sm leading-6 text-googleTextLight">Quiet workstations for AI, containers, compilers, multitasking.</p>
+          </div>
+        </article>
+        <article class="cat-card reveal">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=700&q=80" alt="Office" class="h-44 w-full object-cover"/>
+          <div class="p-5">
+            <div class="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#e6f4ea">
+              <svg class="h-5 w-5 text-googleGreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3 class="text-base font-medium text-googleTextDark">Office</h3>
+            <p class="mt-1.5 text-sm leading-6 text-googleTextLight">Reliable, low-maintenance PCs for teams, finance, and daily work.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       PRE-BUILDS  ── Google Store Carousel
+  ════════════════════════════════════════ -->
+  <section id="prebuilds" class="px-4 py-20 sm:px-6" style="background:#fff">
+    <div class="mx-auto max-w-7xl">
+
+      <div class="reveal mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p class="mb-2 text-sm font-medium uppercase tracking-widest text-googleBlue">Pre-Built PCs</p>
+          <h2 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.01em">Premium collections ready to ship.</h2>
+        </div>
+        <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-medium text-googleBlue hover:underline">
+          Compare all builds
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- ── HERO CAROUSEL ── -->
+      <div class="store-carousel-wrap reveal mb-10">
+
+        <!-- Slide 1 -->
+        <div class="store-slide active" id="sl0"
+             style="grid-template-columns:1fr 1.2fr;min-height:340px;padding:48px 52px;gap:32px;align-items:center;background:linear-gradient(135deg,#e8f0fe,#f0f4ff)">
+          <div>
+            <p class="mb-2 text-sm font-medium uppercase tracking-widest text-googleBlue">Nebula RTX</p>
+            <h3 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.02em">Performance<br>without limits.</h3>
+            <p class="mt-4 text-xl font-medium text-googleTextDark">$1,849</p>
+            <p class="mt-1 text-sm text-googleTextLight">or $154/mo for 12 months</p>
+            <div class="mt-2 inline-block rounded border border-googleBorder bg-white px-3 py-1 text-xs text-googleTextMedium">RTX 4070 Super / Ryzen 7 / 32GB DDR5 / 2TB NVMe</div>
+            <div class="mt-5 flex items-center gap-2">
+              <button class="cswatch active" style="background:#1a1a2e" data-label="Midnight" aria-label="Midnight"></button>
+              <button class="cswatch" style="background:#e8eaed" data-label="Arctic White" aria-label="Arctic White"></button>
+              <button class="cswatch" style="background:#1a73e8" data-label="Ocean Blue" aria-label="Ocean Blue"></button>
+            </div>
+            <p class="mt-1.5 text-xs text-googleTextLight">Color: <span class="sl-color">Midnight</span></p>
+            <a href="#contact" class="lpill ripple mt-6 inline-flex items-center gap-2 rounded-full bg-googleBlue px-7 py-3 text-sm font-medium text-white shadow transition hover:bg-blue-700">Order Now</a>
+          </div>
+          <div class="flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=88" alt="Nebula RTX" class="h-64 w-full max-w-sm rounded-2xl object-cover shadow-xl sm:h-72"/>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="store-slide" id="sl1"
+             style="grid-template-columns:1fr 1.2fr;min-height:340px;padding:48px 52px;gap:32px;align-items:center;background:linear-gradient(135deg,#f0fdf4,#e6f4ea)">
+          <div>
+            <p class="mb-2 text-sm font-medium uppercase tracking-widest text-googleGreen">Creator Max</p>
+            <h3 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.02em">Create without<br>compromise.</h3>
+            <p class="mt-4 text-xl font-medium text-googleTextDark">$799</p>
+            <p class="mt-1 text-sm text-googleTextLight">or $233/mo for 12 months</p>
+            <div class="mt-2 inline-block rounded border border-googleBorder bg-white px-3 py-1 text-xs text-googleTextMedium">>RTX 4070 Super / Ryzen 7 / 32GB DDR5 / 2TB NVMe</div>
+            <div class="mt-5 flex items-center gap-2">
+              <button class="cswatch active" style="background:#1a1a2e" data-label="Midnight" aria-label="Midnight"></button>
+              <button class="cswatch" style="background:#34a853" data-label="Sage Green" aria-label="Sage Green"></button>
+              <button class="cswatch" style="background:#6d1b7b" data-label="Deep Purple" aria-label="Deep Purple"></button>
+            </div>
+            <p class="mt-1.5 text-xs text-googleTextLight">Color: <span class="sl-color">Midnight</span></p>
+            <a href="#contact" class="lpill ripple mt-6 inline-flex items-center gap-2 rounded-full bg-googleGreen px-7 py-3 text-sm font-medium text-white shadow transition hover:opacity-90">Order Now</a>
+          </div>
+          <div class="flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&w=900&q=88" alt="Creator Max" class="h-64 w-full max-w-sm rounded-2xl object-cover shadow-xl sm:h-72"/>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="store-slide" id="sl2"
+             style="grid-template-columns:1fr 1.2fr;min-height:340px;padding:48px 52px;gap:32px;align-items:center;background:linear-gradient(135deg,#fef5e0,#fff9ec)">
+          <div>
+            <p class="mb-2 text-sm font-medium uppercase tracking-widest text-googleYellow">Studio Mini</p>
+            <h3 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.02em">Compact power,<br>big results.</h3>
+            <p class="mt-4 text-xl font-medium text-googleTextDark">$1,299</p>
+            <p class="mt-1 text-sm text-googleTextLight">or $108/mo for 12 months</p>
+            <div class="mt-2 inline-block rounded border border-googleBorder bg-white px-3 py-1 text-xs text-googleTextMedium">RTX 4060 Ti / Core i5 / 32GB DDR5 / 1TB NVMe</div>
+            <div class="mt-5 flex items-center gap-2">
+              <button class="cswatch active" style="background:#e8eaed" data-label="Arctic White" aria-label="Arctic White"></button>
+              <button class="cswatch" style="background:#fbbc05" data-label="Solar Yellow" aria-label="Solar Yellow"></button>
+              <button class="cswatch" style="background:#1a1a2e" data-label="Obsidian" aria-label="Obsidian"></button>
+            </div>
+            <p class="mt-1.5 text-xs text-googleTextLight">Color: <span class="sl-color">Arctic White</span></p>
+            <a href="#contact" class="lpill ripple mt-6 inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-medium shadow transition" style="background:#fbbc05;color:#202124">Order Now</a>
+          </div>
+          <div class="flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1603481546579-65d935ba9cdd?auto=format&fit=crop&w=900&q=88" alt="Studio Mini" class="h-64 w-full max-w-sm rounded-2xl object-cover shadow-xl sm:h-72"/>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="store-slide" id="sl3"
+             style="grid-template-columns:1fr 1.2fr;min-height:340px;padding:48px 52px;gap:32px;align-items:center;background:linear-gradient(135deg,#fce8e6,#fff0ef)">
+          <div>
+            <p class="mb-2 text-sm font-medium uppercase tracking-widest text-googleRed">Apex Pro</p>
+            <h3 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.02em">Dominate every<br>game, every frame.</h3>
+            <p class="mt-4 text-xl font-medium text-googleTextDark">$3,499</p>
+            <p class="mt-1 text-sm text-googleTextLight">or $292/mo for 12 months</p>
+            <div class="mt-2 inline-block rounded border border-googleBorder bg-white px-3 py-1 text-xs text-googleTextMedium">RTX 4090 / Core i9-14900K / 128GB DDR5 / 8TB NVMe</div>
+            <div class="mt-5 flex items-center gap-2">
+              <button class="cswatch active" style="background:#1a1a2e" data-label="Obsidian" aria-label="Obsidian"></button>
+              <button class="cswatch" style="background:#ea4335" data-label="Crimson Red" aria-label="Crimson Red"></button>
+            </div>
+            <p class="mt-1.5 text-xs text-googleTextLight">Color: <span class="sl-color">Obsidian</span></p>
+            <a href="#contact" class="lpill ripple mt-6 inline-flex items-center gap-2 rounded-full bg-googleRed px-7 py-3 text-sm font-medium text-white shadow transition hover:opacity-90">Order Now</a>
+          </div>
+          <div class="flex items-center justify-center">
+            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=88" alt="Apex Pro" class="h-64 w-full max-w-sm rounded-2xl object-cover shadow-xl sm:h-72"/>
+          </div>
+        </div>
+        <!-- Carousel controls bar -->
+        <div class="flex items-center justify-between border-t border-googleBorder bg-white/70 px-5 py-3 backdrop-blur">
+          <div class="flex items-center gap-2" id="dotNav">
+            <button class="dot-ind active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="dot-ind" data-slide="1" aria-label="Slide 2"></button>
+            <button class="dot-ind" data-slide="2" aria-label="Slide 3"></button>
+            <button class="dot-ind" data-slide="3" aria-label="Slide 4"></button>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-googleTextLight" id="slideCtr">1 / 4</span>
+            <button class="carousel-arrow" id="cPrev" aria-label="Previous">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel-arrow" id="cNext" aria-label="Next">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRODUCT CARD GRID (Google Store style) ── -->
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="pc-card reveal">
+          <img src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=700&q=80" alt="Nebula RTX" class="pc-card-img"/>
+          <div class="pc-card-body">
+            <div class="pc-card-title"><span>Nebula RTX</span><span class="pc-card-price">$1,849</span></div>
+            <p class="pc-card-spec">RTX 4070 Super / Ryzen 7 / 32GB DDR5 / 2TB NVMe</p>
+            <button class="pc-card-btn ripple">View Details</button>
+          </div>
+        </article>
+        <article class="pc-card reveal">
+          <img src="https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&w=700&q=80" alt="Creator Max" class="pc-card-img"/>
+          <div class="pc-card-body">
+            <div class="pc-card-title"><span>Creator Max</span><span class="pc-card-price">$2,799</span></div>
+            <p class="pc-card-spec">RTX 4080 Super / Core i9 / 64GB DDR5 / 4TB NVMe</p>
+            <button class="pc-card-btn ripple">View Details</button>
+          </div>
+        </article>
+        <article class="pc-card reveal">
+          <img src="https://images.unsplash.com/photo-1603481546579-65d935ba9cdd?auto=format&fit=crop&w=700&q=80" alt="Studio Mini" class="pc-card-img"/>
+          <div class="pc-card-body">
+            <div class="pc-card-title"><span>Studio Mini</span><span class="pc-card-price">$1,299</span></div>
+            <p class="pc-card-spec">RTX 4060 Ti / Core i5 / 32GB DDR5 / 1TB NVMe</p>
+            <button class="pc-card-btn ripple">View Details</button>
+          </div>
+        </article>
+        <article class="pc-card reveal">
+          <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=700&q=80" alt="Apex Pro" class="pc-card-img"/>
+          <div class="pc-card-body">
+            <div class="pc-card-title"><span>Apex Pro</span><span class="pc-card-price">$3,499</span></div>
+            <p class="pc-card-spec">RTX 4090 / i9-14900K / 128GB DDR5 / 8TB NVMe</p>
+            <button class="pc-card-btn ripple">View Details</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       WHY CHOOSE US
+  ════════════════════════════════════════ -->
+  <section id="about" class="px-4 py-24 sm:px-6" style="background:linear-gradient(135deg,#eef2ff,#f0fdf4)">
+    <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+      <div class="reveal">
+        <p class="mb-3 text-sm font-medium uppercase tracking-widest text-googleBlue">Why Choose Us</p>
+        <h2 class="text-5xl font-medium leading-tight text-googleTextDark sm:text-6xl" style="letter-spacing:-.01em">Trusted by builders<br>small and large.</h2>
+        <p class="mt-6 max-w-md text-sm leading-6 text-googleTextLight">Every configuration is reviewed by specialists who care about value, airflow, power headroom, and the tiny details that make a PC feel premium.</p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article class="reveal rounded-2xl border border-googleBorder bg-white p-6 shadow-sm transition hover:shadow-md">
+          <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#e8f0fd">
+            <svg class="h-5 w-5 text-googleBlue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3 class="text-base font-medium text-googleTextDark">Expert Recommendations</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">Purpose-first part lists with human review before assembly.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-googleBorder bg-white p-6 shadow-sm transition hover:shadow-md">
+          <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#fce8e6">
+            <svg class="h-5 w-5 text-googleRed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <h3 class="text-base font-medium text-googleTextDark">Budget-Friendly Builds</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">Smarter spend across GPU, CPU, memory, storage, and cooling.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-googleBorder bg-white p-6 shadow-sm transition hover:shadow-md">
+          <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#fef5e0">
+            <svg class="h-5 w-5 text-googleYellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3 class="text-base font-medium text-googleTextDark">High-Quality Components</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">Premium cases, PSUs, motherboards, and validated thermal setups.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-googleBorder bg-white p-6 shadow-sm transition hover:shadow-md">
+          <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl" style="background:#e6f4ea">
+            <svg class="h-5 w-5 text-googleGreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3 class="text-base font-medium text-googleTextDark">Fast Assembly &amp; Delivery</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">Built, stress-tested, packed, and shipped with status updates.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       BRAND MARQUEE
+  ════════════════════════════════════════ -->
+  <section class="border-y border-googleBorder px-4 py-16 sm:px-6" style="background:#f8faff" aria-label="Component brand partners">
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <p class="mb-2 text-sm font-medium uppercase tracking-widest text-googleBlue">Component Partners</p>
+          <h2 class="text-3xl font-medium leading-tight text-googleTextDark sm:text-4xl">Built with brands builders trust.</h2>
+        </div>
+        <p class="max-w-md text-sm leading-6 text-googleTextLight">Premium parts selected for performance, reliability, and upgrade headroom.</p>
+      </div>
+      <div class="reveal relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16" style="background:linear-gradient(to right,#f8faff,transparent)"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16" style="background:linear-gradient(to left,#f8faff,transparent)"></div>
+        <div class="brand-marquee flex w-max gap-3 py-1" id="marqueeTrack">
+          <!-- Brands filled by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       HOW IT WORKS
+  ════════════════════════════════════════ -->
+  <section class="px-4 py-24 sm:px-6" style="background:#fff">
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mx-auto mb-12 max-w-3xl text-center">
+        <p class="mb-3 text-sm font-medium uppercase tracking-widest text-googleGreen">How It Works</p>
+        <h2 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.01em">From idea to powered-on.</h2>
+      </div>
+      <div class="grid gap-5 md:grid-cols-4">
+        <article class="step-card reveal">
+          <span class="text-4xl font-medium" style="color:#1a73e8">01</span>
+          <h3 class="mt-6 text-base font-medium text-googleTextDark">Select Purpose</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">Start with gaming, creator, programming, or office needs.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="text-4xl font-medium" style="color:#34a853">02</span>
+          <h3 class="mt-6 text-base font-medium text-googleTextDark">Customize Components</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">Tune CPU, GPU, memory, cooling, storage, and aesthetics.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="text-4xl font-medium" style="color:#ea4335">03</span>
+          <h3 class="mt-6 text-base font-medium text-googleTextDark">Submit Configuration</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">Send the setup and budget for a final compatibility review.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="text-4xl font-medium" style="color:#fbbc05">04</span>
+          <h3 class="mt-6 text-base font-medium text-googleTextDark">Expert Review &amp; Build</h3>
+          <p class="mt-2 text-sm leading-6 text-googleTextLight">We assemble, test, tune, and deliver your finished machine.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       TESTIMONIALS
+  ════════════════════════════════════════ -->
+  <section class="px-4 py-24 sm:px-6" style="background:#f8faff;border-top:1px solid #e8eaed;border-bottom:1px solid #e8eaed">
+    <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+      <div class="reveal">
+        <p class="mb-3 text-sm font-medium uppercase tracking-widest text-googleBlue">Testimonials</p>
+        <h2 class="text-5xl font-medium leading-tight text-googleTextDark sm:text-6xl" style="letter-spacing:-.01em">For people<br>going places.</h2>
+      </div>
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="reveal rounded-2xl border border-googleBorder bg-white p-6 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Maya Chen" class="h-12 w-12 rounded-full object-cover"/>
+          <h3 class="mt-4 text-sm font-medium text-googleTextDark">Maya Chen</h3>
+          <p class="mt-0.5 text-xs text-googleYellow">★★★★★</p>
+          <p class="mt-3 text-sm leading-6 text-googleTextLight">The build was quiet, beautiful, and faster than my editing studio expected.</p>
+        </article>
+        <article class="reveal rounded-2xl bg-white p-6 shadow-md" style="border:1px solid #e8eaed;border-top:3px solid #1a73e8">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Jordan Park" class="h-12 w-12 rounded-full object-cover"/>
+          <h3 class="mt-4 text-sm font-medium text-googleTextDark">Jordan Park</h3>
+          <p class="mt-0.5 text-xs text-googleYellow">★★★★★</p>
+          <p class="mt-3 text-sm leading-6 text-googleTextLight">They kept me under budget and still nailed 1440p performance.</p>
+        </article>
+        <article class="reveal rounded-2xl border border-googleBorder bg-white p-6 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80" alt="Arjun Rao" class="h-12 w-12 rounded-full object-cover"/>
+          <h3 class="mt-4 text-sm font-medium text-googleTextDark">Arjun Rao</h3>
+          <p class="mt-0.5 text-xs text-googleYellow">★★★★★</p>
+          <p class="mt-3 text-sm leading-6 text-googleTextLight">Clean cable work, great thermals, and no compatibility headaches.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       ACCESSORIES
+  ════════════════════════════════════════ -->
+  <section id="accessories" class="px-4 py-24 sm:px-6" style="background:#fff">
+    <div class="reveal mx-auto max-w-7xl overflow-hidden rounded-2xl border border-googleBorder shadow-sm">
+      <div class="grid lg:grid-cols-2">
+        <div class="p-8 sm:p-12" style="background:linear-gradient(135deg,#eef2ff,#f0fdf4)">
+          <p class="mb-3 text-sm font-medium uppercase tracking-widest text-googleBlue">Accessories</p>
+          <h2 class="text-4xl font-medium leading-tight text-googleTextDark sm:text-5xl" style="letter-spacing:-.01em">Finish the setup.</h2>
+          <p class="mt-5 max-w-md text-sm leading-6 text-googleTextLight">Add curated monitors, keyboards, mice, headsets, capture cards, and desk essentials matched to your build.</p>
+          <div class="mt-8 grid grid-cols-2 gap-3 text-sm font-medium">
+            <span class="cursor-default rounded-xl border border-googleBorder bg-white p-4 text-center text-googleTextMedium transition hover:border-googleBlue hover:shadow-sm">OLED Displays</span>
+            <span class="cursor-default rounded-xl border border-googleBorder bg-white p-4 text-center text-googleTextMedium transition hover:border-googleBlue hover:shadow-sm">Creator Docks</span>
+            <span class="cursor-default rounded-xl border border-googleBorder bg-white p-4 text-center text-googleTextMedium transition hover:border-googleBlue hover:shadow-sm">Mechanical Keys</span>
+            <span class="cursor-default rounded-xl border border-googleBorder bg-white p-4 text-center text-googleTextMedium transition hover:border-googleBlue hover:shadow-sm">Studio Audio</span>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=1200&q=85" alt="Premium PC accessories" class="h-full min-h-80 w-full object-cover lg:min-h-0"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FAQ
+  ════════════════════════════════════════ -->
+  <section id="faq" class="px-4 py-24 sm:px-6" style="background:linear-gradient(135deg,#fef9ec,#fff0f0 50%,#eef2ff);border-top:1px solid #e8eaed;border-bottom:1px solid #e8eaed">
+    <div class="mx-auto max-w-7xl">
+      <div class="reveal mb-10">
+        <p class="mb-3 text-sm font-medium uppercase tracking-widest text-googleBlue">FAQ</p>
+        <h2 class="text-5xl font-medium leading-tight text-googleTextDark sm:text-6xl" style="letter-spacing:-.01em">Frequently asked<br>questions</h2>
+      </div>
+      <div class="reveal divide-y divide-googleBorder border-y border-googleBorder">
+        <details class="faq-item group py-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-medium text-googleTextDark transition hover:text-googleBlue sm:text-lg">
+            What do people need before requesting a build?
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full transition group-open:rotate-45"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="max-w-3xl pt-4 text-sm leading-7 text-googleTextLight sm:text-base">Share your main purpose, budget range, preferred look, monitor resolution, and any must-have parts. If you are unsure, Assembly Pro can recommend a balanced starting point.</p>
+        </details>
+        <details class="faq-item group py-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-medium text-googleTextDark transition hover:text-googleBlue sm:text-lg">
+            Can I bring parts I already own?
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full transition group-open:rotate-45"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="max-w-3xl pt-4 text-sm leading-7 text-googleTextLight sm:text-base">Yes. Send the exact model names and condition of your existing components. We will check compatibility, power requirements, and whether the parts still make sense for your goals.</p>
+        </details>
+        <details class="faq-item group py-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-medium text-googleTextDark transition hover:text-googleBlue sm:text-lg">
+            Do you support accessories and full setups?
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full transition group-open:rotate-45"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="max-w-3xl pt-4 text-sm leading-7 text-googleTextLight sm:text-base">Absolutely. We can pair your PC with monitors, keyboards, mice, headsets, docks, capture gear, and creator accessories that fit the way you work or play.</p>
+        </details>
+        <details class="faq-item group py-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-medium text-googleTextDark transition hover:text-googleBlue sm:text-lg">
+            How long does a custom PC take?
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full transition group-open:rotate-45"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="max-w-3xl pt-4 text-sm leading-7 text-googleTextLight sm:text-base">Most builds are assembled, stress-tested, and prepared for delivery within 3 to 7 business days after components are confirmed and available.</p>
+        </details>
+        <details class="faq-item group py-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-base font-medium text-googleTextDark transition hover:text-googleBlue sm:text-lg">
+            Can you support the PC after delivery?
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full transition group-open:rotate-45"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="max-w-3xl pt-4 text-sm leading-7 text-googleTextLight sm:text-base">Yes. We provide setup guidance, troubleshooting help, upgrade advice, and support for performance or thermal questions after your system arrives.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       CTA BANNER
+  ════════════════════════════════════════ -->
+  <section class="px-4 py-24 sm:px-6" style="background:#f0f4ff">
+    <div class="reveal relative mx-auto max-w-7xl overflow-hidden rounded-3xl px-8 py-20 text-center shadow-2xl"
+         style="background:linear-gradient(135deg,#1a73e8,#6f42c1 45%,#34a853)">
+      <div class="pointer-events-none absolute inset-0" style="background:radial-gradient(circle at 30% 50%,rgba(255,255,255,.08),transparent 60%)"></div>
+      <div class="relative z-10 mx-auto max-w-3xl">
+        <h2 class="text-4xl font-medium leading-tight text-white sm:text-6xl" style="letter-spacing:-.02em">Ready to build your<br>dream PC?</h2>
+        <p class="mx-auto mt-5 max-w-xl text-sm leading-6 text-white/80">Start with your goals and budget. We will help turn the configuration into a polished, tested machine.</p>
+        <a href="#build" class="lpill ripple mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-3.5 text-sm font-medium text-googleBlue shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl">
+          Start Building Now
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer id="contact" class="px-4 py-14 sm:px-6" style="background:linear-gradient(135deg,#1e1f2e,#12172b);color:#e8eaed;border-top:1px solid #2d2f45">
+  <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.3fr_.7fr_.7fr_1fr]">
+
+    <!-- brand -->
+    <div>
+      <a href="#home" class="flex items-center gap-2.5">
+        <div class="logo-star">
+          <svg viewBox="0 0 40 40" width="36" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="sgF" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#1a73e8"/>
+                <stop offset="30%"  stop-color="#ea4335"/>
+                <stop offset="65%"  stop-color="#fbbc05"/>
+                <stop offset="100%" stop-color="#34a853"/>
+              </linearGradient>
+              <linearGradient id="agF" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#1a73e8"/>
+                <stop offset="50%"  stop-color="#ea4335"/>
+                <stop offset="100%" stop-color="#34a853"/>
+              </linearGradient>
+            </defs>
+            <path d="M20 2C20 2 22 14 20 20C18 14 20 2 20 2ZM38 20C38 20 26 22 20 20C26 18 38 20 38 20ZM20 38C20 38 18 26 20 20C22 26 20 38 20 38ZM2 20C2 20 14 18 20 20C14 22 2 20 2 20Z" fill="url(#sgF)"/>
+            <text x="20" y="25.5" text-anchor="middle" font-family="Google Sans,sans-serif" font-weight="700" font-size="14" fill="url(#agF)">A</text>
+          </svg>
+        </div>
+        <span class="text-base font-medium tracking-tight text-white">Assembly<span style="color:#7cb9ff">Pro</span></span>
+      </a>
+      <p class="mt-4 max-w-xs text-sm leading-6" style="color:#9aa0b4">Premium custom PCs assembled with care, tested for stability, and tuned for the work you actually do.</p>
+
+      <!-- social icons -->
+      <div class="mt-5 flex flex-wrap gap-2">
+        <a href="#" aria-label="Instagram" class="soc-ig grid h-10 w-10 place-items-center rounded-full border transition" style="border-color:#3a3d50;background:#1e2030;color:#9aa0b4">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="X / Twitter" class="soc-x grid h-10 w-10 place-items-center rounded-full border transition" style="border-color:#3a3d50;background:#1e2030;color:#9aa0b4">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.834L2.2 2.25h6.961l4.261 5.63L18.244 2.25Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="soc-yt grid h-10 w-10 place-items-center rounded-full border transition" style="border-color:#3a3d50;background:#1e2030;color:#9aa0b4">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M21.8 8a2.765 2.765 0 0 0-1.945-1.958C18.2 5.6 12 5.6 12 5.6s-6.2 0-7.855.443A2.765 2.765 0 0 0 2.2 8 28.96 28.96 0 0 0 1.76 12a28.96 28.96 0 0 0 .44 4 2.765 2.765 0 0 0 1.945 1.958C5.8 18.4 12 18.4 12 18.4s6.2 0 7.855-.443A2.765 2.765 0 0 0 21.8 16a28.96 28.96 0 0 0 .44-4A28.96 28.96 0 0 0 21.8 8ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="soc-li grid h-10 w-10 place-items-center rounded-full border transition" style="border-color:#3a3d50;background:#1e2030;color:#9aa0b4">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6ZM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" class="soc-fb grid h-10 w-10 place-items-center rounded-full border transition" style="border-color:#3a3d50;background:#1e2030;color:#9aa0b4">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok" class="soc-tt grid h-10 w-10 place-items-center rounded-full border transition" style="border-color:#3a3d50;background:#1e2030;color:#9aa0b4">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77-.39 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.37a8.16 8.16 0 0 0 4.77 1.52V7.44a4.85 4.85 0 0 1-1-.75Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- quick links -->
+    <div>
+      <h2 class="text-sm font-medium uppercase tracking-widest text-white">Quick Links</h2>
+      <div class="mt-4 grid gap-2 text-sm" style="color:#9aa0b4">
+        <a href="#build"       class="hover:text-white transition">Build PC</a>
+        <a href="#prebuilds"   class="hover:text-white transition">Pre-Builds</a>
+        <a href="#accessories" class="hover:text-white transition">Accessories</a>
+        <a href="#about"       class="hover:text-white transition">About Us</a>
+      </div>
+    </div>
+
+    <!-- follow -->
+    <div>
+      <h2 class="text-sm font-medium uppercase tracking-widest text-white">Follow Us</h2>
+      <div class="mt-4 grid gap-2 text-sm" style="color:#9aa0b4">
+        <a href="#" class="hover:text-white transition">Instagram</a>
+        <a href="#" class="hover:text-white transition">X / Twitter</a>
+        <a href="#" class="hover:text-white transition">YouTube</a>
+        <a href="#" class="hover:text-white transition">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- contact -->
+    <address class="not-italic">
+      <h2 class="text-sm font-medium uppercase tracking-widest text-white">Contact</h2>
+      <div class="mt-4 grid gap-2 text-sm" style="color:#9aa0b4">
+        <a href="mailto:hello@assemblypro.com" class="hover:text-white transition">hello@assemblypro.com</a>
+        <a href="tel:+15550191109"             class="hover:text-white transition">+1 (555) 019-1109</a>
+        <span>San Francisco, CA</span>
+      </div>
+    </address>
+  </div>
+
+  <div class="mx-auto mt-10 flex max-w-7xl flex-col justify-between gap-3 border-t pt-6 text-xs sm:flex-row" style="border-color:#2d2f45;color:#5c6275">
+    <p>&copy; 2026 Assembly Pro. All rights reserved.</p>
+    <p>Built for performance, elegance, and everyday reliability.</p>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════
+     LOGIN DIALOG
+════════════════════════════════════════ -->
+<dialog id="loginDialog" class="w-[min(92vw,24rem)] rounded-2xl border border-googleBorder p-0 shadow-2xl bg-white">
+  <form class="p-6" method="dialog">
+    <div class="flex items-center justify-between gap-4">
+      <div>
+        <p class="text-xs font-medium uppercase tracking-widest text-googleBlue">Assembly Pro</p>
+        <h2 class="mt-1 text-xl font-medium text-googleTextDark">Welcome back</h2>
+      </div>
+      <button class="grid h-10 w-10 place-items-center rounded-full bg-googleGrayBg text-googleTextMedium hover:bg-googleBorder transition" type="submit" aria-label="Close">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mt-6">
+      <label class="block text-sm font-medium text-googleTextDark" for="email">Email</label>
+      <input id="email" class="mt-2 w-full rounded-xl border border-googleBorder bg-googleGrayBg px-4 py-2.5 text-sm outline-none focus:border-googleBlue focus:bg-white transition" type="email" placeholder="you@example.com"/>
+    </div>
+    <div class="mt-4">
+      <label class="block text-sm font-medium text-googleTextDark" for="password">Password</label>
+      <input id="password" class="mt-2 w-full rounded-xl border border-googleBorder bg-googleGrayBg px-4 py-2.5 text-sm outline-none focus:border-googleBlue focus:bg-white transition" type="password" placeholder="Password"/>
+    </div>
+    <button class="ripple mt-6 w-full rounded-full bg-googleBlue px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 transition" type="button">Login</button>
+  </form>
+</dialog>
+
+<!-- ════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<script>
+  // ── Mobile menu ──────────────────────────────────────────
+  const menuBtn    = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn?.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(!open));
+  });
+  mobileMenu?.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded','false');
+  }));
+
+  // ── Login dialog ──────────────────────────────────────────
+  const loginDialog = document.getElementById('loginDialog');
+  document.querySelectorAll('[data-login-open]').forEach(b =>
+    b.addEventListener('click', () => { mobileMenu?.classList.add('hidden'); loginDialog?.showModal(); })
+  );
+
+  // ── Reveal on scroll ──────────────────────────────────────
+  const revObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); revObs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${Math.min(i % 4, 3) * 80}ms`;
+    revObs.observe(el);
+  });
+
+  // ── Ripple ───────────────────────────────────────────────
+  document.querySelectorAll('.ripple').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const r = btn.getBoundingClientRect(), s = Math.max(r.width, r.height);
+      const d = document.createElement('span');
+      d.className = 'rdot';
+      d.style.cssText = `width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px`;
+      btn.appendChild(d);
+      setTimeout(() => d.remove(), 700);
+    });
+  });
+
+  // ── FAQ accordion ─────────────────────────────────────────
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('toggle', () => {
+      if (!item.open) return;
+      document.querySelectorAll('.faq-item').forEach(o => { if (o !== item) o.open = false; });
+    });
+  });
+
+  // ── Hero Carousel ─────────────────────────────────────────
+  let cur = 0;
+  const slides = document.querySelectorAll('.store-slide');
+  const dots   = document.querySelectorAll('.dot-ind');
+  const ctr    = document.getElementById('slideCtr');
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dots[cur].classList.add('active');
+    if (ctr) ctr.textContent = `${cur + 1} / ${slides.length}`;
+  }
+
+  document.getElementById('cNext')?.addEventListener('click', () => goTo(cur + 1));
+  document.getElementById('cPrev')?.addEventListener('click', () => goTo(cur - 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.slide)));
+
+  let autoPlay = setInterval(() => goTo(cur + 1), 5000);
+  const wrap = document.querySelector('.store-carousel-wrap');
+  wrap?.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  wrap?.addEventListener('mouseleave', () => { autoPlay = setInterval(() => goTo(cur + 1), 5000); });
+
+  // ── Color swatches ────────────────────────────────────────
+  document.querySelectorAll('.store-slide').forEach(slide => {
+    slide.querySelectorAll('.cswatch').forEach(sw => {
+      sw.addEventListener('click', () => {
+        slide.querySelectorAll('.cswatch').forEach(s => s.classList.remove('active'));
+        sw.classList.add('active');
+        const lbl = slide.querySelector('.sl-color');
+        if (lbl) lbl.textContent = sw.dataset.label || '';
+      });
+    });
+  });
+
+  // ── Marquee brands ────────────────────────────────────────
+  const brands = ['Intel','AMD','NVIDIA','ASUS','MSI','Gigabyte','Corsair','Kingston','Samsung','Cooler Master'];
+  const colors = ['#1a73e8','#ea4335','#34a853','#3c4043','#3c4043','#3c4043','#3c4043','#3c4043','#1a73e8','#3c4043'];
+  const track = document.getElementById('marqueeTrack');
+  if (track) {
+    [0,1].forEach(() => {
+      brands.forEach((b, i) => {
+        const d = document.createElement('div');
+        d.className = 'grid h-20 w-44 shrink-0 place-items-center rounded-xl border border-googleBorder bg-white px-4';
+        d.innerHTML = `<span style="font-size:1.2rem;font-weight:500;color:${colors[i]}">${b}</span>`;
+        track.appendChild(d);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
