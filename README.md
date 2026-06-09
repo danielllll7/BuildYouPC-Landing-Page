@@ -99,12 +99,14 @@ Frontend
 HTML5
 Tailwind CSS
 JavaScript
+
 Design Principles
 Semantic HTML
 Mobile-First Design
 Responsive Layouts
 Accessibility Best Practices
 SEO-Friendly Structure
+
 🎨 UI/UX Features
 Smooth Scrolling
 Glassmorphism Effects
@@ -113,6 +115,7 @@ Interactive Hover Effects
 Responsive Navigation
 Modern Product Cards
 Optimized User Experience
+
 📈 Future Enhancements
 User Authentication
 Build Saving Functionality
